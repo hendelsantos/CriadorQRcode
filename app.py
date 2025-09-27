@@ -39,6 +39,10 @@ def is_valid_url(url):
 def index():
     return render_template('index.html')
 
+@app.route('/manifest.json')
+def manifest():
+    return send_file('static/manifest.json', mimetype='application/json')
+
 @app.route('/generate_qr', methods=['POST'])
 def generate_qr():
     try:
