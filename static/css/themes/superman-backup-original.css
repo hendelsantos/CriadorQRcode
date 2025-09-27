@@ -1,0 +1,414 @@
+/* TEMA SUPERMAN 🔵🔴 - Man of Steel - Layout Atualizado */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #dc143c 50%, #2a5298 75%, #1e3c72 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(220, 20, 60, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 60% 70%, rgba(30, 60, 114, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Layout de duas colunas */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    align-items: stretch; /* Cards com mesma altura */
+}
+
+h1 {
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 15px rgba(220, 20, 60, 0.5);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Layout de duas colunas */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.form-section {
+    background: rgba(30, 60, 114, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255, 215, 0, 0.3);
+    border: 3px solid rgba(220, 20, 60, 0.6);
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+}
+
+.result-section {
+    background: rgba(30, 60, 114, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255, 215, 0, 0.3);
+    border: 3px solid rgba(220, 20, 60, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 450px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Seletor de tipos */
+.type-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 12px 16px;
+    background: rgba(42, 82, 152, 0.8);
+    border: 2px solid #dc143c;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.type-btn:hover, .type-btn.active {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+    color: #ffd700;
+}
+
+#qrForm {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px;
+}
+
+.input-group {
+    flex: 1;
+}
+
+.input-section {
+    display: none;
+}
+
+.input-section.active {
+    display: block;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+input[type="text"], input[type="url"], input[type="tel"], textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #dc143c;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(42, 82, 152, 0.8);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="url"]:focus, input[type="tel"]:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    background: rgba(30, 60, 114, 0.9);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.generate-btn {
+    background: linear-gradient(135deg, #dc143c 0%, #ffd700 50%, #1e3c72 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.generate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 20px rgba(0,0,0,0.4),
+        0 0 25px rgba(220, 20, 60, 0.4);
+    background: linear-gradient(135deg, #ffd700 0%, #dc143c 50%, #1e3c72 100%);
+}
+
+/* QR Code Container */
+.qr-container {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 20px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-placeholder {
+    background: rgba(42, 82, 152, 0.8);
+    border: 2px dashed #ffd700;
+    border-radius: 15px;
+    padding: 40px 25px;
+    text-align: center;
+    color: #ffd700;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-placeholder i {
+    font-size: 48px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.qr-placeholder p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.8;
+    font-weight: bold;
+}
+
+.qr-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 3px solid #ffd700;
+}
+
+/* Botões de ação do QR */
+.qr-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    justify-content: center;
+    width: 100%;
+}
+
+.action-btn {
+    flex: 1;
+    min-width: 90px;
+    padding: 10px 16px;
+    background: rgba(42, 82, 152, 0.9);
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.action-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.qr-info {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(42, 82, 152, 0.6);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.qr-info h3 {
+    color: #ffd700;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.qr-info p {
+    color: #fff;
+    margin: 0;
+    word-break: break-all;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+footer {
+    background: linear-gradient(135deg, rgba(30, 60, 114, 0.9) 0%, rgba(220, 20, 60, 0.9) 100%);
+    color: #ffd700;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    border-top: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+footer i {
+    color: #dc143c;
+    margin-left: 5px;
+    text-shadow: 0 0 8px rgba(220, 20, 60, 0.8);
+}
+
+@media (max-width: 968px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .form-section, .result-section {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .form-section, .result-section {
+        padding: 20px;
+        min-height: 300px;
+    }
+    
+    .type-selector {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .type-btn {
+        justify-content: flex-start;
+        padding: 12px 16px;
+    }
+    
+    .generate-btn {
+        padding: 14px 24px;
+        font-size: 14px;
+    }
+    
+    .qr-placeholder {
+        height: 180px;
+        padding: 30px 20px;
+    }
+    
+    .qr-placeholder i {
+        font-size: 36px;
+    }
+    
+    .action-btn {
+        min-width: 80px;
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+}

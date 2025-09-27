@@ -3,8 +3,33 @@ import qrcode
 from io import BytesIO
 import base64
 import re
+import json
+import os
 
 app = Flask(__name__)
+
+def load_theme_config():
+    """Carrega configuração dos temas"""
+    try:
+        with open('themes_config.json', 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except:
+        return {
+            "current_theme": "dark-vader",
+            "available_themes": {
+                "dark-vader": {
+                    "name": "Dark Vader",
+                    "description": "Tema escuro inspirado no lado sombrio da força",
+                    "css_file": "themes/dark-vader.css",
+                    "icon": "🌑"
+                }
+            }
+        }
+
+def save_theme_config(config):
+    """Salva configuração dos temas"""
+    with open('themes_config.json', 'w', encoding='utf-8') as f:
+        json.dump(config, f, indent=2, ensure_ascii=False)
 
 def is_valid_phone(phone):
     """Valida se o número de telefone está em formato válido"""
@@ -37,7 +62,10 @@ def is_valid_url(url):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    theme_config = load_theme_config()
+    current_theme = theme_config.get('current_theme', 'dark-vader')
+    available_themes = theme_config.get('available_themes', {})
+    return render_template('index.html', current_theme=current_theme, available_themes=available_themes)
 
 @app.route('/manifest.json')
 def manifest():

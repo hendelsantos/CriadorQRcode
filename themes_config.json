@@ -1,0 +1,59 @@
+{
+  "current_theme": "matrix",
+  "available_themes": {
+    "dark-vader": {
+      "name": "Dark Vader",
+      "description": "Tema escuro inspirado no lado sombrio da força",
+      "css_file": "themes/dark-vader.css",
+      "icon": "🌑"
+    },
+    "original": {
+      "name": "Tema Original",
+      "description": "Tema original com gradiente roxo",
+      "css_file": "style-original.css",
+      "icon": "💜"
+    },
+    "halloween": {
+      "name": "Halloween",
+      "description": "Tema assombrado para outubro - laranja e preto",
+      "css_file": "themes/halloween.css",
+      "icon": "🎃"
+    },
+    "natal": {
+      "name": "Natal",
+      "description": "Tema natalino - verde, vermelho e dourado",
+      "css_file": "themes/natal.css",
+      "icon": "🎄"
+    },
+    "matrix": {
+      "name": "Matrix Hacker",
+      "description": "Tema Matrix - verde neon estilo hacker",
+      "css_file": "themes/matrix.css",
+      "icon": "🔴"
+    },
+    "batman": {
+      "name": "Batman",
+      "description": "The Dark Knight - preto, cinza e dourado",
+      "css_file": "themes/batman.css",
+      "icon": "🦇"
+    },
+    "superman": {
+      "name": "Superman",
+      "description": "Man of Steel - azul, vermelho e dourado",
+      "css_file": "themes/superman.css",
+      "icon": "🔵"
+    },
+    "homem-ferro": {
+      "name": "Homem de Ferro",
+      "description": "Iron Man - vermelho, dourado com efeitos de energia",
+      "css_file": "themes/homem-ferro.css",
+      "icon": "🔴"
+    },
+    "hulk": {
+      "name": "Hulk",
+      "description": "The Incredible Hulk - verde, roxo com animações de força",
+      "css_file": "themes/hulk.css",
+      "icon": "💚"
+    }
+  }
+}

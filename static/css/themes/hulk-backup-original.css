@@ -1,0 +1,302 @@
+/* TEMA HULK 💚💪 - The Incredible Hulk - Layout Atualizado */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial Black', Arial, sans-serif;
+    background: linear-gradient(135deg, #0d2818 0%, #228b22 25%, #32cd32 50%, #228b22 75%, #0d2818 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 30% 30%, rgba(50, 205, 50, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 70% 20%, rgba(128, 0, 128, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(34, 139, 34, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: hulk-rage 4s ease-in-out infinite alternate;
+}
+
+@keyframes hulk-rage {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: stretch;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #32cd32;
+    margin-bottom: 30px;
+    font-size: 2.8rem;
+    text-shadow: 
+        0 0 10px #32cd32,
+        0 0 20px #32cd32,
+        0 0 30px #32cd32;
+    animation: hulk-glow 2s ease-in-out infinite alternate;
+    grid-column: 1 / -1;
+}
+
+@keyframes hulk-glow {
+    from { text-shadow: 0 0 10px #32cd32, 0 0 20px #32cd32; }
+    to { text-shadow: 0 0 20px #32cd32, 0 0 30px #32cd32, 0 0 40px #32cd32; }
+}
+
+.form-section {
+    background: rgba(13, 40, 24, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #32cd32;
+    box-shadow: 
+        0 0 30px rgba(50, 205, 50, 0.3),
+        inset 0 0 20px rgba(50, 205, 50, 0.1);
+    backdrop-filter: blur(10px);
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    animation: hulk-smash 0.5s ease-out;
+}
+
+@keyframes hulk-smash {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.result-section {
+    background: rgba(13, 40, 24, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #32cd32;
+    box-shadow: 
+        0 0 30px rgba(50, 205, 50, 0.3),
+        inset 0 0 20px rgba(50, 205, 50, 0.1);
+    backdrop-filter: blur(10px);
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: hulk-smash 0.7s ease-out;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #32cd32;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px #32cd32;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #228b22;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #32cd32;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #32cd32;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 15px rgba(50, 205, 50, 0.4);
+    transform: scale(1.02);
+}
+
+.form-control::placeholder {
+    color: #90ee90;
+    opacity: 0.7;
+}
+
+.btn {
+    background: linear-gradient(45deg, #228b22, #32cd32);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(50, 205, 50, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #32cd32, #00ff00);
+    box-shadow: 0 6px 25px rgba(50, 205, 50, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:active {
+    transform: translateY(0px) scale(0.95);
+    animation: hulk-punch 0.2s ease-out;
+}
+
+@keyframes hulk-punch {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #800080, #9932cc);
+    margin-top: 10px;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(45deg, #9932cc, #ba55d3);
+    box-shadow: 0 6px 25px rgba(186, 85, 211, 0.5);
+}
+
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    flex: 1;
+    justify-content: center;
+}
+
+#qr-code {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(50, 205, 50, 0.3);
+    animation: hulk-appear 0.5s ease-out;
+}
+
+@keyframes hulk-appear {
+    0% { opacity: 0; transform: scale(0.5) rotate(-180deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+#qr-code img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.qr-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.qr-actions .btn {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* Animações especiais Hulk */
+@keyframes hulk-strength {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+    
+    .form-section,
+    .result-section {
+        min-height: auto;
+        padding: 20px;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+    
+    .qr-actions {
+        flex-direction: column;
+    }
+    
+    .qr-actions .btn {
+        min-width: auto;
+    }
+}
+
+/* Efeito de partículas verdes */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(50, 205, 50, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(50, 205, 50, 0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(50, 205, 50, 0.4), transparent);
+    background-size: 550px 550px;
+    animation: hulk-particles 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes hulk-particles {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-550px) rotate(360deg); }
+}

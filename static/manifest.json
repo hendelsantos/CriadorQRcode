@@ -1,11 +1,11 @@
 {
-  "name": "Gerador de QR Code",
-  "short_name": "QR Generator",
-  "description": "Crie QR codes para WhatsApp, URLs ou texto personalizado",
+  "name": "Gerador de QR Code - Dark Edition",
+  "short_name": "QR Generator Dark",
+  "description": "Crie QR codes para WhatsApp, URLs ou texto personalizado - Tema Dark",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#667eea",
-  "theme_color": "#667eea",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ffd700",
   "orientation": "portrait-primary",
   "icons": [
     {

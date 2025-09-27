@@ -8,17 +8,16 @@ import os
 
 def create_qr_favicon(size=32):
     """Cria um favicon com design de QR Code"""
-    # Criar imagem com fundo gradient (simulado)
+    # Criar imagem com fundo dark
     img = Image.new('RGBA', (size, size), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
     
-    # Background com gradient simulado
+    # Background dark gradient
     for y in range(size):
         ratio = y / size
-        r = int(102 + (118 - 102) * ratio)  # 667eea to 764ba2
-        g = int(126 + (75 - 126) * ratio)
-        b = int(234 + (162 - 234) * ratio)
-        draw.line([(0, y), (size-1, y)], fill=(r, g, b, 255))
+        # Gradiente do preto ao cinza escuro
+        gray_value = int(10 + (45 - 10) * ratio)  # De #0a0a0a para #2d2d2d
+        draw.line([(0, y), (size-1, y)], fill=(gray_value, gray_value, gray_value, 255))
     
     # Escalar elementos baseado no tamanho
     scale = size / 32
@@ -26,23 +25,26 @@ def create_qr_favicon(size=32):
     def scaled(value):
         return int(value * scale)
     
-    # Corner squares (cantos do QR Code)
+    # Corner squares (cantos do QR Code) - dourados
+    gold_color = (255, 215, 0, 255)  # #FFD700
+    dark_color = (26, 26, 26, 255)   # #1a1a1a
+    
     # Top-left
-    draw.rectangle([scaled(3), scaled(3), scaled(9), scaled(9)], fill=(255, 255, 255, 255))
-    draw.rectangle([scaled(4), scaled(4), scaled(8), scaled(8)], fill=(102, 126, 234, 255))
-    draw.rectangle([scaled(5), scaled(5), scaled(7), scaled(7)], fill=(255, 255, 255, 255))
+    draw.rectangle([scaled(3), scaled(3), scaled(9), scaled(9)], fill=gold_color)
+    draw.rectangle([scaled(4), scaled(4), scaled(8), scaled(8)], fill=dark_color)
+    draw.rectangle([scaled(5), scaled(5), scaled(7), scaled(7)], fill=gold_color)
     
     # Top-right
-    draw.rectangle([scaled(22), scaled(3), scaled(28), scaled(9)], fill=(255, 255, 255, 255))
-    draw.rectangle([scaled(23), scaled(4), scaled(27), scaled(8)], fill=(102, 126, 234, 255))
-    draw.rectangle([scaled(24), scaled(5), scaled(26), scaled(7)], fill=(255, 255, 255, 255))
+    draw.rectangle([scaled(22), scaled(3), scaled(28), scaled(9)], fill=gold_color)
+    draw.rectangle([scaled(23), scaled(4), scaled(27), scaled(8)], fill=dark_color)
+    draw.rectangle([scaled(24), scaled(5), scaled(26), scaled(7)], fill=gold_color)
     
     # Bottom-left
-    draw.rectangle([scaled(3), scaled(22), scaled(9), scaled(28)], fill=(255, 255, 255, 255))
-    draw.rectangle([scaled(4), scaled(23), scaled(8), scaled(27)], fill=(102, 126, 234, 255))
-    draw.rectangle([scaled(5), scaled(24), scaled(7), scaled(26)], fill=(255, 255, 255, 255))
+    draw.rectangle([scaled(3), scaled(22), scaled(9), scaled(28)], fill=gold_color)
+    draw.rectangle([scaled(4), scaled(23), scaled(8), scaled(27)], fill=dark_color)
+    draw.rectangle([scaled(5), scaled(24), scaled(7), scaled(26)], fill=gold_color)
     
-    # Data pattern (pontos do QR Code)
+    # Data pattern (pontos do QR Code) - dourados
     data_points = [
         (12, 4), (15, 4), (18, 4),
         (4, 12), (7, 12),
@@ -56,11 +58,11 @@ def create_qr_favicon(size=32):
     ]
     
     for x, y in data_points:
-        draw.rectangle([scaled(x), scaled(y), scaled(x+1), scaled(y+1)], fill=(255, 255, 255, 255))
+        draw.rectangle([scaled(x), scaled(y), scaled(x+1), scaled(y+1)], fill=gold_color)
     
-    # Center pattern
-    draw.rectangle([scaled(14), scaled(14), scaled(17), scaled(17)], fill=(255, 255, 255, 255))
-    draw.rectangle([scaled(15), scaled(15), scaled(16), scaled(16)], fill=(102, 126, 234, 255))
+    # Center pattern - dourado
+    draw.rectangle([scaled(14), scaled(14), scaled(17), scaled(17)], fill=gold_color)
+    draw.rectangle([scaled(15), scaled(15), scaled(16), scaled(16)], fill=dark_color)
     
     return img
 

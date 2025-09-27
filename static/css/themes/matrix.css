@@ -1,0 +1,449 @@
+/* TEMA MATRIX 💊🔢 - Código Digital 🦇 - The Dark Knight */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial Black', Arial, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0a0a0a 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(128, 128, 128, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Layout de duas colunas */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    align-items: stretch; /* Cards com mesma altura */
+}
+
+.form-section {
+    background: rgba(15, 15, 25, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255, 215, 0, 0.2);
+    border: 2px solid rgba(128, 128, 128, 0.4);
+    display: flex;
+    flex-direction: column;
+    min-height: 450px; /* Altura menor */
+}
+
+.result-section {
+    background: rgba(15, 15, 25, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255, 215, 0, 0.2);
+    border: 2px solid rgba(128, 128, 128, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 450px; /* Altura menor */
+}
+
+h1 {
+    color: #00ff00;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(255, 215, 0, 0.4);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Seletor de tipos */
+.type-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 12px 16px;
+    background: rgba(26, 26, 46, 0.8);
+    border: 2px solid #333;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.type-btn:hover, .type-btn.active {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #00ff00;
+    color: #00ff00;
+}
+
+/* Form flex para ocupar espaço */
+#qrForm {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px;
+}
+
+.input-group {
+    flex: 1;
+}
+
+.input-section {
+    display: none;
+}
+
+.input-section.active {
+    display: block;
+}
+
+.generate-btn {
+    background: linear-gradient(135deg, #1a1a2e 0%, #00ff00 50%, #808080 100%);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto; /* Empurra para o final */
+}
+
+/* QR Code Container */
+.qr-container {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 20px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-placeholder {
+    background: rgba(26, 26, 46, 0.8);
+    border: 2px dashed #00ff00;
+    border-radius: 15px;
+    padding: 40px 25px;
+    text-align: center;
+    color: #00ff00;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-placeholder i {
+    font-size: 48px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.qr-placeholder p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.8;
+    font-weight: bold;
+}
+
+/* QR Code quando exibido */
+.qr-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    border: 3px solid #00ff00;
+}
+
+/* Botões de ação do QR */
+.qr-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    justify-content: center;
+    width: 100%;
+}
+
+.action-btn {
+    flex: 1;
+    min-width: 90px;
+    padding: 10px 16px;
+    background: rgba(26, 26, 46, 0.9);
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.action-btn:hover {
+    background: rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Informações do QR */
+.qr-info {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(26, 26, 46, 0.6);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.qr-info h3 {
+    color: #00ff00;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.qr-info p {
+    color: #fff;
+    margin: 0;
+    word-break: break-all;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #00ff00;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+input[type="text"], input[type="url"], input[type="tel"], textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(20, 20, 30, 0.9);
+    color: #fff;
+    transition: all 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+
+input[type="text"]:focus, input[type="url"]:focus, input[type="tel"]:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #00ff00;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    background: rgba(26, 26, 46, 0.9);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    background: linear-gradient(135deg, #1a1a2e 0%, #00ff00 50%, #808080 100%);
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 20px rgba(0,0,0,0.5),
+        0 0 25px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #00ff00 0%, #1a1a2e 50%, #808080 100%);
+    color: #fff;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 20px rgba(0,0,0,0.5),
+        0 0 25px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #00ff00 0%, #1a1a2e 50%, #808080 100%);
+    color: #fff;
+}
+
+#qrResult {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#qrResult img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    border: 3px solid #00ff00;
+}
+
+footer {
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(26, 26, 46, 0.9) 100%);
+    color: #00ff00;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    border-top: 2px solid rgba(128, 128, 128, 0.3);
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+footer i {
+    color: #00ff00;
+    margin-left: 5px;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+@media (max-width: 968px) {
+    .container {
+        padding: 15px;
+    }
+    
+    /* Layout em coluna única no tablet */
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .form-section, .result-section {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    /* Layout em coluna única no mobile */
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .form-section, .result-section {
+        padding: 20px;
+        min-height: 300px;
+    }
+    
+    .type-selector {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .type-btn {
+        justify-content: flex-start;
+        padding: 12px 16px;
+    }
+    
+    .generate-btn {
+        padding: 14px 24px;
+        font-size: 14px;
+    }
+    
+    .qr-placeholder {
+        height: 180px;
+        padding: 30px 20px;
+    }
+    
+    .qr-placeholder i {
+        font-size: 36px;
+    }
+    
+    .action-btn {
+        min-width: 80px;
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+}

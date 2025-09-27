@@ -43,11 +43,12 @@
     
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-    <meta name="theme-color" content="#667eea">
-    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="theme-color" content="#ffd700">
+    <meta name="msapplication-TileColor" content="#0a0a0a">
     <meta name="msapplication-TileImage" content="{{ url_for('static', filename='images/favicon-192x192.png') }}">
     
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- CSS Theme dinamico -->
+    <link id="theme-css" rel="stylesheet" href="{{ url_for('static', filename='css/' + available_themes[current_theme]['css_file']) }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
