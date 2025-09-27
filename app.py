@@ -43,6 +43,15 @@ def index():
 def manifest():
     return send_file('static/manifest.json', mimetype='application/json')
 
+@app.route('/health')
+def health_check():
+    """Health check endpoint for Railway"""
+    return jsonify({
+        'status': 'healthy',
+        'service': 'QR Code Generator',
+        'version': '1.0.0'
+    }), 200
+
 @app.route('/generate_qr', methods=['POST'])
 def generate_qr():
     try:
@@ -143,4 +152,5 @@ def download_qr():
 if __name__ == '__main__':
     import os
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    debug_mode = os.environ.get('FLASK_ENV') == 'development'
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)

@@ -118,10 +118,17 @@ CriarQRcode/
 ## 🚀 Deploy
 
 Para fazer deploy em produção, considere usar:
+- **Railway** ⭐ (Recomendado): Deploy automático com GitHub - [Ver guia](RAILWAY_DEPLOY.md)
 - **Heroku**: Platform as a Service
 - **Vercel**: Para aplicações web
 - **DigitalOcean**: VPS próprio
 - **AWS**: EC2 ou Elastic Beanstalk
+
+### Deploy no Railway (Mais Fácil)
+1. Fork este repositório no GitHub
+2. Acesse [railway.app](https://railway.app)
+3. Conecte com GitHub e selecione o repositório
+4. Deploy automático! 🚀
 
 ## 📝 Licença
 
