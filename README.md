@@ -8,9 +8,12 @@ Um serviço web moderno e intuitivo para gerar QR codes para WhatsApp, URLs e te
 - **URLs**: Crie QR codes para qualquer link ou website  
 - **Texto**: Transforme qualquer texto em QR code
 - **Interface moderna**: Design responsivo e bonito
+- **Favicon personalizado**: Logo com QR Code em vários tamanhos
+- **PWA Ready**: Pode ser instalado como aplicativo web
 - **Download**: Baixe os QR codes como PNG
 - **Copiar**: Copie a imagem para área de transferência
 - **Compartilhar**: Compartilhe facilmente com outros
+- **SEO otimizado**: Meta tags para melhor indexação
 
 ## 🚀 Como executar
 
@@ -92,13 +95,24 @@ CriarQRcode/
 ├── app.py                 # Aplicação Flask principal
 ├── requirements.txt       # Dependências Python
 ├── README.md             # Este arquivo
+├── generate_favicon.py   # Script para gerar favicons
+├── generate_logo.py      # Script para gerar logos
+├── Procfile              # Configuração Heroku
+├── .gitignore            # Arquivos ignorados pelo Git
 ├── templates/
 │   └── index.html        # Template principal
 └── static/
     ├── css/
     │   └── style.css     # Estilos CSS
-    └── js/
-        └── script.js     # JavaScript interativo
+    ├── js/
+    │   └── script.js     # JavaScript interativo
+    ├── images/           # Logos e favicons
+    │   ├── favicon.ico   # Favicon principal
+    │   ├── favicon.svg   # Favicon vetorial
+    │   ├── favicon-*.png # Favicons em vários tamanhos
+    │   ├── logo.png      # Logo da aplicação
+    │   └── logo-small.png # Logo pequeno
+    └── manifest.json     # Manifesto PWA
 ```
 
 ## 🚀 Deploy
