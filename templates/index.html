@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-qrcode"></i> Gerador de QR Code</h1>
+            <p>Crie QR codes para WhatsApp, URLs ou texto personalizado</p>
+        </header>
+
+        <div class="main-content">
+            <div class="form-section">
+                <div class="type-selector">
+                    <button class="type-btn active" data-type="whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </button>
+                    <button class="type-btn" data-type="url">
+                        <i class="fas fa-link"></i>
+                        URL/Link
+                    </button>
+                    <button class="type-btn" data-type="text">
+                        <i class="fas fa-text-width"></i>
+                        Texto
+                    </button>
+                </div>
+
+                <form id="qrForm">
+                    <div class="input-group">
+                        <div id="whatsapp-input" class="input-section active">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i>
+                                Número do WhatsApp
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                placeholder="(11) 99999-9999 ou 11999999999"
+                                maxlength="20"
+                            >
+                            <small>Digite o número com DDD (será adicionado +55 automaticamente)</small>
+                        </div>
+
+                        <div id="url-input" class="input-section">
+                            <label for="url">
+                                <i class="fas fa-globe"></i>
+                                URL ou Link
+                            </label>
+                            <input 
+                                type="url" 
+                                id="url" 
+                                placeholder="https://www.exemplo.com ou www.exemplo.com"
+                            >
+                            <small>Cole o link completo ou apenas o domínio</small>
+                        </div>
+
+                        <div id="text-input" class="input-section">
+                            <label for="text">
+                                <i class="fas fa-keyboard"></i>
+                                Texto Personalizado
+                            </label>
+                            <textarea 
+                                id="text" 
+                                placeholder="Digite seu texto aqui..."
+                                rows="4"
+                                maxlength="500"
+                            ></textarea>
+                            <small>Máximo 500 caracteres</small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="generate-btn">
+                        <i class="fas fa-magic"></i>
+                        Gerar QR Code
+                    </button>
+                </form>
+            </div>
+
+            <div class="result-section" id="result-section">
+                <div class="qr-container">
+                    <div class="qr-placeholder">
+                        <i class="fas fa-qrcode"></i>
+                        <p>Seu QR Code aparecerá aqui</p>
+                    </div>
+                </div>
+                
+                <div class="qr-actions" style="display: none;">
+                    <button id="download-btn" class="action-btn download">
+                        <i class="fas fa-download"></i>
+                        Baixar PNG
+                    </button>
+                    <button id="copy-btn" class="action-btn copy">
+                        <i class="fas fa-copy"></i>
+                        Copiar Imagem
+                    </button>
+                    <button id="share-btn" class="action-btn share">
+                        <i class="fas fa-share-alt"></i>
+                        Compartilhar
+                    </button>
+                </div>
+
+                <div class="qr-info" style="display: none;">
+                    <h3>Informações do QR Code:</h3>
+                    <p id="qr-data"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Gerando QR Code...</p>
+        </div>
+
+        <div class="alert" id="alert" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="alert-message"></span>
+            <button id="alert-close">&times;</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Feito por <strong>Hendel</strong> <i class="fas fa-heart"></i></p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

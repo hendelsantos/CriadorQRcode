@@ -1,0 +1,464 @@
+/* Reset e configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header h1 i {
+    margin-right: 15px;
+    color: #ffd700;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Conteúdo principal */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* Seção do formulário */
+.form-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.form-section:hover {
+    transform: translateY(-5px);
+}
+
+/* Seletor de tipo */
+.type-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: #f8f9fa;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 15px 10px;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: #666;
+}
+
+.type-btn i {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.type-btn:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+}
+
+.type-btn.active {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Seções de input */
+.input-section {
+    display: none;
+}
+
+.input-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.input-group label i {
+    margin-right: 8px;
+    color: #667eea;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.input-group small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Botão gerar */
+.generate-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.generate-btn:active {
+    transform: translateY(0);
+}
+
+.generate-btn i {
+    margin-right: 10px;
+}
+
+/* Seção de resultado */
+.result-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.qr-container {
+    margin-bottom: 30px;
+}
+
+.qr-placeholder {
+    padding: 60px 20px;
+    border: 3px dashed #e1e5e9;
+    border-radius: 15px;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+.qr-placeholder i {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.qr-placeholder p {
+    font-size: 1.1rem;
+}
+
+.qr-image {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: zoomIn 0.5s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Ações do QR Code */
+.qr-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.action-btn i {
+    margin-right: 8px;
+}
+
+.download {
+    background: #28a745;
+    color: white;
+}
+
+.download:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+.copy {
+    background: #6f42c1;
+    color: white;
+}
+
+.copy:hover {
+    background: #5a2d91;
+    transform: translateY(-2px);
+}
+
+.share {
+    background: #fd7e14;
+    color: white;
+}
+
+.share:hover {
+    background: #e8650c;
+    transform: translateY(-2px);
+}
+
+/* Informações do QR Code */
+.qr-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.qr-info h3 {
+    margin-bottom: 10px;
+    color: #667eea;
+}
+
+.qr-info p {
+    word-break: break-all;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #667eea;
+}
+
+/* Loading */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Alert */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #dc3545;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.alert.success {
+    background: #28a745;
+}
+
+.alert.success {
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+#alert-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Footer */
+footer {
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 1.1rem;
+}
+
+footer strong {
+    color: #ffd700;
+}
+
+footer i {
+    color: #e74c3c;
+    margin-left: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .form-section,
+    .result-section {
+        padding: 20px;
+    }
+    
+    .type-selector {
+        flex-direction: column;
+    }
+    
+    .type-btn {
+        text-align: center;
+    }
+    
+    .qr-actions {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .alert {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+}
