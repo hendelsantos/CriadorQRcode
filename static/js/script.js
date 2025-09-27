@@ -421,3 +421,122 @@ rippleStyle.textContent = `
     }
 `;
 document.head.appendChild(rippleStyle);
+
+// ================================
+// EASTER EGG DISCRETO - FRASES NERDS
+// ================================
+
+// Frases nerds por tema
+const nerdPhrases = {
+    'batman': [
+        "I'm Batman. 🦇",
+        "Why do we fall? So we can learn to pick ourselves up.",
+        "It's not who I am underneath, but what I do that defines me.",
+        "I have one rule: I don't kill.",
+        "The night is darkest just before the dawn."
+    ],
+    'superman': [
+        "Truth, Justice, and the American Way! 🔵",
+        "Sometimes you have to take a leap of faith first.",
+        "You're much stronger than you think you are.",
+        "There's always a way to fight back.",
+        "Hope. That's what the S stands for."
+    ],
+    'hulk': [
+        "Hulk Smash! 💚",
+        "That's my secret, Cap. I'm always angry.",
+        "Don't make me angry. You wouldn't like me when I'm angry.",
+        "Hulk is strongest there is!",
+        "Hulk protect!"
+    ],
+    'dark-vader': [
+        "I find your lack of faith disturbing. 🌑",
+        "The Force is strong with this one.",
+        "You underestimate the power of the Dark Side.",
+        "I am your father.",
+        "Search your feelings, you know it to be true."
+    ],
+    'homem-ferro': [
+        "I am Iron Man. ❤️",
+        "Sometimes you gotta run before you can walk.",
+        "Genius, billionaire, playboy, philanthropist.",
+        "I love you 3000.",
+        "Part of the journey is the end."
+    ],
+    'halloween': [
+        "Boo! Did I scare you? 🎃",
+        "Every day is Halloween, isn't it?",
+        "We all go a little mad sometimes.",
+        "Be afraid. Be very afraid.",
+        "It's alive! IT'S ALIVE!"
+    ],
+    'natal': [
+        "Ho ho ho! Merry Christmas! 🎄",
+        "The best way to spread Christmas cheer is singing loud for all to hear.",
+        "Every time a bell rings, an angel gets his wings.",
+        "It's beginning to look a lot like Christmas!",
+        "Peace on Earth, goodwill to men."
+    ],
+    'matrix': [
+        "Welcome to the real world. 💊",
+        "There is no spoon.",
+        "Follow the white rabbit.",
+        "The Matrix has you...",
+        "Red pill or blue pill?"
+    ],
+    'original': [
+        "Keep it simple, keep it classy. 💜",
+        "Less is more.",
+        "Simplicity is the ultimate sophistication.",
+        "Good design is obvious. Great design is transparent.",
+        "Design is thinking made visual."
+    ]
+};
+
+// Easter Egg Trigger
+const easterEggTrigger = document.getElementById('easter-egg-trigger');
+const nerdPhraseDiv = document.getElementById('nerd-phrase');
+
+if (easterEggTrigger && nerdPhraseDiv) {
+    let clickCount = 0;
+    let currentTheme = 'dark-vader'; // Default, será atualizado pelo Flask
+    
+    // Detectar tema atual do CSS
+    const themeCSS = document.getElementById('theme-css');
+    if (themeCSS) {
+        const cssPath = themeCSS.getAttribute('href');
+        const themeMatch = cssPath.match(/themes\/([^.]+)\.css/);
+        if (themeMatch) {
+            currentTheme = themeMatch[1];
+        }
+    }
+    
+    easterEggTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+        clickCount++;
+        
+        // Pequena animação no ícone
+        this.style.transform = 'scale(1.3) rotate(20deg)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 200);
+        
+        // Mostrar frase nerd
+        const phrases = nerdPhrases[currentTheme] || nerdPhrases['original'];
+        const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+        
+        nerdPhraseDiv.textContent = randomPhrase;
+        nerdPhraseDiv.style.display = 'block';
+        
+        // Esconder frase após 4 segundos
+        setTimeout(() => {
+            nerdPhraseDiv.style.display = 'none';
+        }, 4000);
+        
+        // Easter egg especial após 5 cliques
+        if (clickCount >= 5) {
+            nerdPhraseDiv.textContent = "🤓 Nerd level unlocked! You found the secret!";
+            clickCount = 0; // Reset
+        }
+    });
+}
